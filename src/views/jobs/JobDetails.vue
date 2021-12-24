@@ -8,11 +8,14 @@
 
 <script>
 export default {
-data() {
-    return {
-        id: this.$route.params.id
-    }
-}
+    // "id: job.id" param from Jobs.vue I can accept as a prop below
+props: ['id'], 
+// If we set props, we don't need to setup data object below   
+// data() {
+//     return {
+//         id: this.$route.params.id
+//     }
+// }
 }
 </script>
 

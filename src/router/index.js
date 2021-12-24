@@ -26,6 +26,8 @@ const routes = [
 		path: "/jobs/:id",
 		name: "JobDetails",
 		component: JobDetails,
+		// to accept param from Jobs.vue as a prop in JobDetails.vue, we can accept any params in this route
+		props: true,
 	},
 ];
 // This instance creates a router for our app

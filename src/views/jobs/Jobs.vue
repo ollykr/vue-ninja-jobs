@@ -1,7 +1,8 @@
 <template>
   <h1>Jobs</h1>
-  <div v-for="job in jobs" :key="job.id">
-      <h2>{{ job.title }}</h2>
+  <div v-for="job in jobs" :key="job.id" class="job">
+      <!-- params are key/value pair where "id" is a key, and "job.id" (comes from data object/jobs property, e.g id:1, id:2, id:3, etc) is a value -->
+      <router-link :to="{ name: 'JobDetails', params: {id: job.id } }"><h2>{{ job.title }}</h2></router-link>
   </div>
 </template>
 
@@ -20,6 +21,20 @@ data() {
 </script>
 
 <style>
-
+ .job h2{
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 600px;
+    cursor: pointer;
+    color: #444;
+  }
+  .job h2:hover {
+    background: #ddd;
+  }
+  .job a{
+    text-decoration: none;
+  }
 </style>
 
