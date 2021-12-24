@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Jobs from "../views/Jobs.vue";
+import Jobs from "../views/jobs/Jobs.vue";
+import JobDetails from "../views/jobs/JobDetails.vue";
 
 // Array of different routes, each is an object with properties
 const routes = [
@@ -19,6 +20,12 @@ const routes = [
 		path: "/jobs",
 		name: "Jobs",
 		component: Jobs,
+	},
+	{
+		// it can be "slug" instead of "id"
+		path: "/jobs/:id",
+		name: "JobDetails",
+		component: JobDetails,
 	},
 ];
 // This instance creates a router for our app
