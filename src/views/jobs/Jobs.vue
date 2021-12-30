@@ -1,22 +1,33 @@
 <template>
   <h1>Jobs</h1>
-  <div v-for="job in jobs" :key="job.id" class="job">
+  <div v-if="jobs.length">
+       <div v-for="job in jobs" :key="job.id" class="job">
       <!-- params are key/value pair where "id" is a key, and "job.id" (comes from data object/jobs property, e.g id:1, id:2, id:3, etc) is a value -->
       <router-link :to="{ name: 'JobDetails', params: {id: job.id } }"><h2>{{ job.title }}</h2></router-link>
+        </div>
   </div>
+  <div v-else>
+<p>Loading jobs...</p>
+  </div>
+  
 </template>
 
 <script>
 export default {
 data() {
     return {
-        jobs: [
-            { title: 'Ninja UX Designer', id:1, details: 'lorem'},
-            { title: 'Ninja Web Developer', id:2, details: 'lorem'},
-            { title: 'Ninja Vue Developer', id:3, details: 'lorem'},
-        ]
+        jobs: []
     }
-}
+},
+    // Fetch data from db.js inside mounted lifecycle hook, it fires up when the component mounts the dom
+     // Fetch the daya in URL and returns it as JSON format
+        // Since it is unsyncroneous, it returns the promise 
+   mounted() {
+      fetch('http://localhost:3000/jobs') 
+          .then(res => res.json())
+          .then(data => this.jobs = data)
+          .catch(err => console.log(err.message))
+   }
 }
 </script>
 
