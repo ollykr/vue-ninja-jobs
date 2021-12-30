@@ -16,6 +16,12 @@ const routes = [
 		path: "/about",
 		name: "About",
 		component: About,
+		// lazy load this component ONLY if it is visited this route by firing an annomious function
+		// instead of importing it above with all other components like "import About from "../views/About.vue";"
+		// The technique is called a code splitting
+		// Reduces an initial loading time, useful for production when load heavy JS bundles
+		// Docs: https://next.router.vuejs.org/guide/advanced/lazy-loading.html
+		// component: () => import("../views/About.vue"),
 	},
 	{
 		path: "/jobs",

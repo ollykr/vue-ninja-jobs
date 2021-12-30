@@ -10,9 +10,35 @@
     <!-- <a href="about">About</a> -->
     <router-link :to="{ name: 'Jobs' }">Jobs</router-link>
   </div>
+<!-- Programatic navigation using WebHistory API -->
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Go back</button>
+  <button @click="forward">Go forward</button>
+
   <!-- The place where our router components are dynamically injected depending on a the router we visit -->
   <router-view/>
 </template>
+<script>
+export default {
+  methods: {
+    redirect() {
+      // 'this' references the component instance
+      // use $route to get an info about CURRENT route
+      // use $router when we want to do something with the route, like move them around
+      // redirect, or 'push' to a specific route
+      this.$router.push({name: 'Home'})
+    },
+    back() {
+      // go(-1) means go back one step in browsing history, -2 gives you 2 steps back in browsing history 
+this.$router.go(-1)
+    },
+    forward() {
+      // '1' implies +1 meaning 1 step FORWARD in browsing history
+this.$router.go(1)
+    },
+  }
+}
+</script>
 
 <style>
 #app {
@@ -38,5 +64,11 @@
 #nav a.router-link-exact-active {
   color: white;
   background: crimson;
+}
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>

@@ -1,0 +1,10 @@
+{
+    // Create a key
+    // Any top-level keys/properties are seen as resources
+    // "jobs" resource as an array containing objects
+    "jobs": [
+            { "title": "Ninja UX Designer", "id":1, "details": "lorem"},
+            { "title": "Ninja Web Developer", "id":2, "details": "lorem"},
+            { "title": "Ninja Vue Developer", "id":3, "details": "lorem"},
+    ]
+}
