@@ -7,9 +7,8 @@
         </div>
   </div>
   <div v-else>
-<p>Loading jobs...</p>
+      <p>Loading jobs...</p>
   </div>
-  
 </template>
 
 <script>
@@ -22,8 +21,8 @@ data() {
     // Fetch data from db.js inside mounted lifecycle hook, it fires up when the component mounts the dom
      // Fetch the daya in URL and returns it as JSON format
         // Since it is unsyncroneous, it returns the promise 
-   mounted() {
-      fetch('http://localhost:3000/jobs') 
+mounted() {
+    fetch('http://localhost:3000/jobs') 
           .then(res => res.json())
           .then(data => this.jobs = data)
           .catch(err => console.log(err.message))
